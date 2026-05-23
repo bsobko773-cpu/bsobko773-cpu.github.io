@@ -391,13 +391,9 @@
     } else {
         revenue = 0; // Якщо партнерки нема, дохід 0
     }
-            let newVid = { id: Date.now(), title: `${cfg.name} #${num}`, format: key, views: 0, revenue: 0, cpm: cfg.cpm, hoursMult: state.upgrades.includes("team_editor") ? cfg.hoursMult*2 : cfg.hoursMult, velocity: baseV, decay: 0.92, isViral: isViral, isEvergreen: Math.random() < eChance, isActive: true };
-        id: Date.now(), 
-        title: `${cfg.name} #${num}`, 
-        format: key, 
-        views: baseV, 
-        revenue: revenue, // Ось тут ми використовуємо порахований прибуток
-        cpm: cfg.cpm 
+            let newVid = { id: Date.now(), title: `${cfg.name} #${num}`, format: key, views: 0, revenue: 0, cpm: cfg.cpm, hoursMult: state.upgrades.includes("team_editor") ? cfg.hoursMult*2 : cfg.hoursMult, velocity: baseV, decay: 0.92, isViral: isViral, isEvergreen: Math.random() < eChance, isActive: true, revenue: revenue };
+
+        
     };
             state.videos.unshift(newVid);
             document.getElementById('ui-trust').innerText = `Algorithm Trust: ${Math.min(100, Math.floor(tF*100))}%`;

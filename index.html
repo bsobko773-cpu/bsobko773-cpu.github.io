@@ -379,9 +379,26 @@
             let vChance = state.upgrades.includes("ai_kling") ? 0.08 : 0.02;
             let eChance = state.upgrades.includes("ai_kling") ? 0.35 : 0.15;
             let isViral = Math.random() < vChance && tF > 0.5; if(isViral) baseV *= (5 + Math.random() * 15);
+// 1. Рахуємо потенційний дохід (кількість переглядів * CPM)
+            let revenue = Math.floor(baseV * cfg.cpm);
 
+    // 2. Додаємо дохід до балансу ТІЛЬКИ, якщо партнерка підключена
+    // Припускаємо, що у твоєму стані є змінна state.isMonetized
+             if (state.isMonetized) {
+         state.money += revenue;
+        // Оновлюємо цифру на екрані
+        document.getElementById('stat-money').innerText = '$' + state.money.toFixed(2);
+    } else {
+        revenue = 0; // Якщо партнерки нема, дохід 0
+    }
             let newVid = { id: Date.now(), title: `${cfg.name} #${num}`, format: key, views: 0, revenue: 0, cpm: cfg.cpm, hoursMult: state.upgrades.includes("team_editor") ? cfg.hoursMult*2 : cfg.hoursMult, velocity: baseV, decay: 0.92, isViral: isViral, isEvergreen: Math.random() < eChance, isActive: true };
-            
+        id: Date.now(), 
+        title: `${cfg.name} #${num}`, 
+        format: key, 
+        views: baseV, 
+        revenue: revenue, // Ось тут ми використовуємо порахований прибуток
+        cpm: cfg.cpm 
+    };
             state.videos.unshift(newVid);
             document.getElementById('ui-trust').innerText = `Algorithm Trust: ${Math.min(100, Math.floor(tF*100))}%`;
             document.getElementById('ui-video-count').innerText = `${num} vids`;

@@ -110,12 +110,16 @@
         .ach-desc { font-size: 10px; color: var(--text-muted); }
 
         /* БАНЕР */
-        #bottom-banner-container { width: 100%; height: 90px; background-color: #050505; border-top: 1px solid var(--border-color); display: flex; justify-content: center; align-items: center; flex-direction: column; z-index: 999; }
-        .banner-placeholder { width: 100%; max-width: 728px; height: 60px; background-color: #111; border: 1px dashed #555; display: flex; justify-content: center; align-items: center; color: #666; font-size: 12px; letter-spacing: 1px; overflow: hidden; }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+       /* ВИПРАВЛЕНИЙ БАНЕР */
+#bottom-banner-container { 
+    width: 100%; 
+    min-height: 90px; /* Мінімальна висота, щоб не стрибало */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+}
         <script>
   atOptions = {
     'key' : '991c152547f95dc79da737ae2679f4b8',

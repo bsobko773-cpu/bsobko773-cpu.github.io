@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <script src="https://pl29531700.effectivecpmnetwork.com/ee/eb/fb/eeebfbbd1165d3128b7633754d5c599f.js"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YTSim: Tycoon Edition (Fixed)</title>
+    <title>YTSim: Tycoon Edition (Official Monetization)</title>
     <style>
         :root {
             --bg-dark: #0a0a0c; --panel-bg: #16161a;
@@ -18,7 +17,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; user-select: none; }
         body { background-color: var(--bg-dark); color: var(--text-main); height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
 
-        /* --- ГОЛОВНЕ МЕНЮ --- */
+        /* --- MAIN MENU --- */
         #main-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0a0a0c 0%, #1a1a24 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10000; }
         .menu-card { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 16px; width: 380px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .menu-card h1 { font-size: 26px; margin-bottom: 5px; }
@@ -28,10 +27,9 @@
         .btn-new { background: var(--accent-blue); color: black; }
         .btn-load { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
 
-        /* --- ІНТЕРФЕЙС ГРИ --- */
+        /* --- GAME INTERFACE --- */
         #app-container { display: flex; flex: 1; height: calc(100vh - 90px); width: 100%; overflow: hidden; }
         
-        /* Бокове меню */
         .sidebar { min-width: 250px; width: 250px; background-color: var(--panel-bg); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; padding: 20px 10px; overflow-y: auto; }
         .channel-info { text-align: center; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); margin-bottom: 15px; }
         .channel-info h2 { font-size: 18px; word-break: break-all; }
@@ -46,22 +44,21 @@
         .nav-btn:hover { background-color: rgba(255,255,255,0.05); }
         .nav-btn.active { background-color: var(--border-color); color: var(--text-main); border-left: 3px solid var(--accent-blue); }
 
-        /* Головний контент */
         .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; padding: 25px; }
         
-        /* Адаптивна сітка статів */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
         .stat-card { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 15px; border-radius: 12px; position: relative; }
         .stat-card h3 { font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
         .stat-card .val { font-size: 22px; font-weight: bold; }
         .stat-card .sub { font-size: 11px; color: var(--accent-green); margin-top: 5px; }
-        .btn-ypp { position: absolute; top: 15px; right: 15px; background: var(--accent-green); color: white; border: none; padding: 5px 10px; font-size: 10px; font-weight: bold; border-radius: 4px; cursor: pointer; display: none; }
+        .btn-ypp { background: var(--accent-green); color: white; border: none; padding: 6px 12px; font-size: 11px; font-weight: bold; border-radius: 4px; cursor: pointer; display: none; width: 100%; margin-top: 8px; transition: 0.2s; }
+        .btn-ypp:hover { background: #238c34; }
 
         .tab { display: none; }
         .tab.active { display: block; }
         .panel { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; margin-bottom: 20px; }
 
-        /* СТУДІЯ - Адаптивна сітка */
+        /* STUDIO */
         .studio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start; }
         .form-label { font-size: 12px; color: var(--text-muted); margin-bottom: 5px; display: block; }
         select { width: 100%; padding: 12px; background: var(--bg-dark); border: 1px solid var(--border-color); color: white; border-radius: 8px; margin-bottom: 15px; outline: none; }
@@ -79,7 +76,7 @@
         .badge-viral { background: var(--accent-red); color: white; }
         .badge-green { background: var(--accent-green); color: white; }
 
-        /* АНАЛІТИКА */
+        /* ANALYTICS */
         .chart-controls { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
         .chart-btn { background: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 12px; }
         .chart-btn.active { background: var(--border-color); color: white; border-color: var(--accent-blue); }
@@ -93,7 +90,7 @@
         .deep-stat-title { font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
         .deep-stat-val { font-size: 20px; font-weight: bold; color: var(--accent-gold); }
 
-        /* БІЗНЕС - Адаптивна сітка */
+        /* BUSINESS */
         .upgrade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
         .upgrade-card { background: var(--bg-dark); border: 1px solid var(--border-color); padding: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
         .upgrade-info h4 { font-size: 14px; margin-bottom: 4px; }
@@ -102,7 +99,7 @@
         .btn-buy:hover:not(:disabled) { background: var(--accent-gold); color: black; }
         .btn-buy:disabled { border-color: #444; color: #444; cursor: not-allowed; }
 
-        /* ДОСЯГНЕННЯ - Адаптивна сітка */
+        /* ACHIEVEMENTS */
         .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
         .ach-card { background: var(--bg-dark); border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; text-align: center; opacity: 0.5; filter: grayscale(1); transition: 0.3s; }
         .ach-card.unlocked { opacity: 1; filter: grayscale(0); border-color: var(--accent-gold); background: linear-gradient(180deg, rgba(255,215,0,0.1) 0%, var(--bg-dark) 100%); }
@@ -110,7 +107,7 @@
         .ach-title { font-size: 12px; font-weight: bold; margin-bottom: 5px; color: var(--text-main); }
         .ach-desc { font-size: 10px; color: var(--text-muted); }
 
-        /* БАНЕР */
+        /* BANNER */
         #bottom-banner-container { width: 100%; height: 90px; background-color: #050505; border-top: 1px solid var(--border-color); display: flex; justify-content: center; align-items: center; flex-direction: column; z-index: 999; }
         .banner-placeholder { width: 100%; max-width: 728px; height: 60px; background-color: #111; border: 1px dashed #555; display: flex; justify-content: center; align-items: center; color: #666; font-size: 12px; letter-spacing: 1px; overflow: hidden; }
 
@@ -318,9 +315,8 @@
             }
         }
 
-        // --- ВІЗУАЛЬНЕ ЗБЕРЕЖЕННЯ ---
         function saveGame() { 
-            if(!state.channel) return; // Не зберігати порожню гру
+            if(!state.channel) return;
             localStorage.setItem('ytsim_tycoon_save', JSON.stringify(state)); 
             
             let btn = document.getElementById('btn-save');
@@ -329,12 +325,7 @@
                 btn.innerHTML = "✅ Saved!";
                 btn.style.borderColor = "var(--accent-green)";
                 btn.style.color = "var(--accent-green)";
-                
-                setTimeout(() => {
-                    btn.innerHTML = oldHtml;
-                    btn.style.borderColor = "var(--border-color)";
-                    btn.style.color = "var(--text-muted)";
-                }, 1500);
+                setTimeout(() => { btn.innerHTML = oldHtml; btn.style.borderColor = "var(--border-color)"; btn.style.color = "var(--text-muted)"; }, 1500);
             }
         }
 
@@ -344,7 +335,7 @@
             document.getElementById('main-menu').style.display = 'none';
             document.getElementById('app-container').style.display = 'flex';
             document.getElementById('ui-channel-name').innerText = "@" + state.channel;
-            initAchievements(); renderBusinessTab(); renderChart(30); checkPlayButtons();
+            initAchievements(); renderBusinessTab(); renderChart(30); checkPlayButtons(); updateTopStats();
         }
 
         function switchTab(tab) {
@@ -354,10 +345,10 @@
             document.getElementById('btn-' + tab).classList.add('active');
             
             if(tab === 'analytics') { calcDeepStats(); renderChart(currentChartPeriod); }
-            if(tab === 'business') { renderBusinessTab(); } // Баг виправлено тут!
+            if(tab === 'business') { renderBusinessTab(); } 
         }
 
-        // --- ВІДЕО ---
+        // --- VIDEOS ---
         function renderVideo() {
             let btn = document.getElementById('btn-render'); let fill = document.getElementById('render-fill');
             let key = document.getElementById('video-format').value; let cfg = formatConfig[key];
@@ -379,22 +370,9 @@
             let vChance = state.upgrades.includes("ai_kling") ? 0.08 : 0.02;
             let eChance = state.upgrades.includes("ai_kling") ? 0.35 : 0.15;
             let isViral = Math.random() < vChance && tF > 0.5; if(isViral) baseV *= (5 + Math.random() * 15);
-// 1. Рахуємо потенційний дохід (кількість переглядів * CPM)
-            let revenue = Math.floor(baseV * cfg.cpm);
 
-    // 2. Додаємо дохід до балансу ТІЛЬКИ, якщо партнерка підключена
-    // Припускаємо, що у твоєму стані є змінна state.isMonetized
-             if (state.isMonetized) {
-         state.money += revenue;
-        // Оновлюємо цифру на екрані
-        document.getElementById('stat-money').innerText = '$' + state.money.toFixed(2);
-    } else {
-        revenue = 0; // Якщо партнерки нема, дохід 0
-    }
-            let newVid = { id: Date.now(), title: `${cfg.name} #${num}`, format: key, views: 0, revenue: 0, cpm: cfg.cpm, hoursMult: state.upgrades.includes("team_editor") ? cfg.hoursMult*2 : cfg.hoursMult, velocity: baseV, decay: 0.92, isViral: isViral, isEvergreen: Math.random() < eChance, isActive: true, revenue: revenue };
-
-        
-    };
+            let newVid = { id: Date.now(), title: `${cfg.name} #${num}`, format: key, views: 0, revenue: 0, cpm: cfg.cpm, hoursMult: state.upgrades.includes("team_editor") ? cfg.hoursMult*2 : cfg.hoursMult, velocity: baseV, decay: 0.92, isViral: isViral, isEvergreen: Math.random() < eChance, isActive: true };
+            
             state.videos.unshift(newVid);
             document.getElementById('ui-trust').innerText = `Algorithm Trust: ${Math.min(100, Math.floor(tF*100))}%`;
             document.getElementById('ui-video-count').innerText = `${num} vids`;
@@ -402,6 +380,7 @@
             
             if(isViral) unlockAch("a7");
             if(newVid.isEvergreen) unlockAch("a8");
+        }
 
         function injectVideoHTML(v) {
             let h = `<div class="video-item" id="row-${v.id}"><div><div class="video-title">${v.isViral?'<span class="badge badge-viral">VIRAL</span>':''}${v.isEvergreen?'<span class="badge badge-green">Evergreen</span>':''} ${v.title}</div><div class="video-meta">${v.format.toUpperCase()} | CPM: $${v.cpm.toFixed(2)}</div></div><div class="v-views" id="v-${v.id}">0 views</div></div>`;
@@ -409,7 +388,7 @@
         }
         function rebuildVideoList() { document.getElementById('video-list-container').innerHTML = ''; state.videos.slice(0, 50).forEach(v => injectVideoHTML(v)); }
 
-        // --- БІЗНЕС ---
+        // --- BUSINESS ---
         function renderBusinessTab() {
             let upBox = document.getElementById('upgrades-container'); upBox.innerHTML = '';
             upgradesList.forEach(u => {
@@ -424,9 +403,17 @@
         }
         function buyUpg(id, cost) { if(state.money >= cost) { state.money -= cost; state.upgrades.push(id); renderBusinessTab(); calcDeepStats(); } }
         function claimSp(id, pay) { if(!state.sponsors.includes(id)) { state.money += pay; state.sponsors.push(id); renderBusinessTab(); if(id==="sp_1") unlockAch("a14"); } }
-        function applyYPP() { if(state.subs>=1000 && state.hours>=4000) { state.isMonetized = true; unlockAch("a13"); updateTopStats(); } }
+        
+        // КНОПКА ВКЛЮЧЕННЯ МОНЕТИЗАЦІЇ (YPP) СТРОГО АНГЛІЙСЬКОЮ
+        function applyYPP() { 
+            if(state.subs >= 1000 && state.hours >= 4000) { 
+                state.isMonetized = true; 
+                unlockAch("a13"); 
+                updateTopStats(); 
+            } 
+        }
 
-        // --- АНАЛІТИКА ---
+        // --- ANALYTICS ---
         function calcDeepStats() {
             let ctr = 4.0; if(state.upgrades.includes("team_thumb")) ctr += 3.5; if(state.upgrades.includes("ai_kling")) ctr += 1.5;
             let ret = 25.0; if(state.upgrades.includes("team_editor")) ret += 15.0;
@@ -471,7 +458,7 @@
             });
         }
 
-        // --- ДОСЯГНЕННЯ ---
+        // --- ACHIEVEMENTS ---
         function initAchievements() {
             let box = document.getElementById('achievements-container'); box.innerHTML = '';
             achievementsList.forEach(a => {
@@ -507,7 +494,7 @@
             document.getElementById('award-diamond').classList.toggle('active', state.subs >= 10000000);
         }
 
-        // --- ЕНДЖІН (ENGINE) ---
+        // --- GAME ENGINE ---
         let dailyViewsAcc = 0; let tickCnt = 0;
         
         function updateTopStats() {
@@ -515,10 +502,25 @@
             document.getElementById('stat-views').innerText = Math.floor(state.views).toLocaleString();
             document.getElementById('stat-hours').innerText = Math.floor(state.hours).toLocaleString();
             document.getElementById('stat-money').innerText = "$" + state.money.toFixed(2);
+
             let reqEl = document.getElementById('ui-monetization-req'); let btnYpp = document.getElementById('btn-apply-ypp');
-            if (state.isMonetized) { reqEl.innerText = "YPP Active"; reqEl.style.color = "var(--accent-green)"; btnYpp.style.display = 'none'; }
-            else if(state.subs>=1000 && state.hours>=4000) { reqEl.style.display = 'none'; btnYpp.style.display = 'block'; btnYpp.disabled = false; }
-            else { reqEl.style.display = 'block'; btnYpp.style.display = 'none'; }
+            
+            if (state.isMonetized) { 
+                reqEl.innerText = "YPP Active"; 
+                reqEl.style.color = "var(--accent-green)"; 
+                btnYpp.style.display = 'none'; 
+            }
+            else if(state.subs >= 1000 && state.hours >= 4000) { 
+                reqEl.style.display = 'none'; 
+                btnYpp.style.display = 'block'; 
+                btnYpp.disabled = false; 
+            }
+            else { 
+                reqEl.style.display = 'block'; 
+                reqEl.innerText = "Need 4,000h & 1K Subs";
+                reqEl.style.color = "var(--accent-red)";
+                btnYpp.style.display = 'none'; 
+            }
         }
 
         setInterval(() => {
@@ -534,7 +536,11 @@
                 if (addV > 0) {
                     v.views += addV; tV += addV; tS += addV * 0.002; tH += addV * v.hoursMult * 0.02;
                     let vEl = document.getElementById(`v-${v.id}`); if (vEl) vEl.innerText = Math.floor(v.views).toLocaleString() + " views";
-                    if (state.isMonetized) tM += (addV / 1000) * v.cpm;
+                    
+                    // ДОХІД НАРАХОВУЄТЬСЯ СТРОГО ЗА СВОЇМ CPM ПІСЛЯ ПІДКЛЮЧЕННЯ МОНЕТИЗАЦІЇ
+                    if (state.isMonetized) {
+                        tM += (addV / 1000) * v.cpm;
+                    }
                 }
             }
 

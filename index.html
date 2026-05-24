@@ -402,7 +402,6 @@
             
             if(isViral) unlockAch("a7");
             if(newVid.isEvergreen) unlockAch("a8");
-        }
 
         function injectVideoHTML(v) {
             let h = `<div class="video-item" id="row-${v.id}"><div><div class="video-title">${v.isViral?'<span class="badge badge-viral">VIRAL</span>':''}${v.isEvergreen?'<span class="badge badge-green">Evergreen</span>':''} ${v.title}</div><div class="video-meta">${v.format.toUpperCase()} | CPM: $${v.cpm.toFixed(2)}</div></div><div class="v-views" id="v-${v.id}">0 views</div></div>`;
